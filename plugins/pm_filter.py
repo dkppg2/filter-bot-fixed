@@ -640,21 +640,47 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
 
 async def auto_filter(client, msg, spoll=False):
+
     if not spoll:
+
         message = msg
+
         settings = await get_settings(message.chat.id)
-        if message.text.startswith("/"): return  # ignore commands
+
+        if message.text.startswith("/"):
+
+            return  # ignore commands
+
         if re.findall("((^\/|^,|^!|^\.|^[\U0001F600-\U000E007F]).*)", message.text):
+
             return
+
         if 2 < len(message.text) < 100:
+
             search = message.text
-            files, offset, total_results = await get_search_results(search.lower(), offset=0, filter=True)
+
+            try:
+
+                files, offset, total_results = await get_search_results(search.lower(), offset=0, filter=True)
+
+            except ValueError:
+
+                # Handle the error here
+
+                return
+
             if not files:
+
                 if settings["spell_check"]:
+
                     return await advantage_spell_chok(msg)
+
                 else:
+
                     return
+
         else:
+
             return
     else:
         settings = await get_settings(msg.message.chat.id)
