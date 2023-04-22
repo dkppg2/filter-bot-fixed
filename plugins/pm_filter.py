@@ -1,3 +1,4 @@
+import time
 import asyncio
 import re
 import ast
@@ -495,7 +496,15 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
-    elif query.data == "button":
+    
+    ]]
+
+
+# ...
+
+if query.data == "button":
+
+    timestamp = str(time.time())  # Add current timestamp to message
 
     buttons = [[
 
@@ -505,25 +514,25 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
     reply_markup = InlineKeyboardMarkup(buttons)
 
-    if query.message.text != script.BUTTON_TXT:
+    await query.message.edit_text(
 
-        await query.message.edit_text(
+        text=script.BUTTON_TXT + timestamp,  # Include timestamp in message text
 
-            text=script.BUTTON_TXT,
+        reply_markup=reply_markup,
 
-            reply_markup=reply_markup,
+        parse_mode=enums.ParseMode.HTML
 
-            parse_mode=enums.ParseMode.HTML
-
-        )
-
-    else:
-
-        # Message content is the same, skip edit operation
-
-        pass
+    )
 
 elif query.data == "autofilter":
+
+    count = 0  # Add a counter to message
+
+    if 'count' in query.message.text:
+
+        count = int(query.message.text.split(' ')[-1])
+
+    count += 1
 
     buttons = [[
 
@@ -533,23 +542,19 @@ elif query.data == "autofilter":
 
     reply_markup = InlineKeyboardMarkup(buttons)
 
-    if query.message.text != script.AUTOFILTER_TXT:
+    await query.message.edit_text(
 
-        await query.message.edit_text(
+        text=script.AUTOFILTER_TXT + f" count: {count}",  # Include counter in message text
 
-            text=script.AUTOFILTER_TXT,
+        reply_markup=reply_markup,
 
-            reply_markup=reply_markup,
+        parse_mode=enums.ParseMode.HTML
 
-            parse_mode=enums.ParseMode.HTML
+    )
 
-        )
 
-    else:
+    
 
-        # Message content is the same, skip edit operation
-
-        pass
     elif query.data == "coct":
         buttons = [[
             InlineKeyboardButton('👩‍🦯 𝙱𝙰𝙲𝙺', callback_data='help')
