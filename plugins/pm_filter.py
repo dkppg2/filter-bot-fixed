@@ -502,7 +502,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
 # ...
 
-if query.data == "button":
+elif query.data == "button":
 
     timestamp = str(time.time())  # Add current timestamp to message
 
