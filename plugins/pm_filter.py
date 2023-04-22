@@ -496,25 +496,60 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode=enums.ParseMode.HTML
         )
     elif query.data == "button":
-        buttons = [[
-            InlineKeyboardButton('👩‍🦯 𝙱𝙰𝙲𝙺', callback_data='manuelfilter')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
+
+    buttons = [[
+
+        InlineKeyboardButton('👩‍🦯 𝙱𝙰𝙲𝙺', callback_data='manuelfilter')
+
+    ]]
+
+    reply_markup = InlineKeyboardMarkup(buttons)
+
+    if query.message.text != script.BUTTON_TXT:
+
         await query.message.edit_text(
+
             text=script.BUTTON_TXT,
+
             reply_markup=reply_markup,
+
             parse_mode=enums.ParseMode.HTML
+
         )
-    elif query.data == "autofilter":
-        buttons = [[
-            InlineKeyboardButton('👩‍🦯 𝙱𝙰𝙲𝙺', callback_data='help')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
+
+    else:
+
+        # Message content is the same, skip edit operation
+
+        pass
+
+elif query.data == "autofilter":
+
+    buttons = [[
+
+        InlineKeyboardButton('👩‍🦯 𝙱𝙰𝙲𝙺', callback_data='help')
+
+    ]]
+
+    reply_markup = InlineKeyboardMarkup(buttons)
+
+    if query.message.text != script.AUTOFILTER_TXT:
+
         await query.message.edit_text(
+
             text=script.AUTOFILTER_TXT,
+
             reply_markup=reply_markup,
+
             parse_mode=enums.ParseMode.HTML
+
         )
+
+    else:
+
+        # Message content is the same, skip edit operation
+
+        pass
     elif query.data == "coct":
         buttons = [[
             InlineKeyboardButton('👩‍🦯 𝙱𝙰𝙲𝙺', callback_data='help')
