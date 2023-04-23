@@ -485,7 +485,67 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
-    
+    elif query.data == "manuelfilter":
+
+        buttons = [[
+
+            InlineKeyboardButton('👩‍🦯 𝙱𝙰𝙲𝙺', callback_data='help'),
+
+            InlineKeyboardButton('⏹️ 𝙱𝚄𝚃𝚃𝙾𝙽𝚂', callback_data='button')
+
+        ]]
+
+        reply_markup = InlineKeyboardMarkup(buttons)
+
+        await query.message.edit_text(
+
+            text=script.MANUELFILTER_TXT,
+
+            reply_markup=reply_markup,
+
+            parse_mode=enums.ParseMode.HTML
+
+        )
+
+    elif query.data == "button":
+
+        buttons = [[
+
+            InlineKeyboardButton('👩‍🦯 𝙱𝙰𝙲𝙺', callback_data='manuelfilter')
+
+        ]]
+
+        reply_markup = InlineKeyboardMarkup(buttons)
+
+        await query.message.edit_text(
+
+            text=script.BUTTON_TXT,
+
+            reply_markup=reply_markup,
+
+            parse_mode=enums.ParseMode.HTML
+
+        )
+
+    elif query.data == "autofilter":
+
+        buttons = [[
+
+            InlineKeyboardButton('👩‍🦯 𝙱𝙰𝙲𝙺', callback_data='help')
+
+        ]]
+
+        reply_markup = InlineKeyboardMarkup(buttons)
+
+        await query.message.edit_text(
+
+            text=script.AUTOFILTER_TXT,
+
+            reply_markup=reply_markup,
+
+            parse_mode=enums.ParseMode.HTML
+
+        )
 
 
 
