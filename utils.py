@@ -14,7 +14,7 @@ from database.users_chats_db import db
 from bs4 import BeautifulSoup
 import requests
 import aiohttp
-import shortzy 
+import shortzy import Shortzy
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
@@ -388,8 +388,8 @@ async def get_shortlink(link):
        #       'link': link,
          #     'format': 'json'
          #     }
-    api, site = URL_SHORTNER_WEBSITE_API, URL_SHORTENR_WEBSITE
-    shortzy = Shortzy(api, site)
+   # api, site = URL_SHORTNER_WEBSITE_API, URL_SHORTENR_WEBSITE
+    shortzy = Shortzy(URL_SHORTNER_WEBSITE_API, URL_SHORTENR_WEBSITE)
     try:
             link = await shortzy.convert(link)
     except Exception as e:
