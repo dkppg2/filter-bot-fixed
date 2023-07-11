@@ -14,7 +14,7 @@ from database.users_chats_db import db
 from bs4 import BeautifulSoup
 import requests
 import aiohttp
-import shortzy import Shortzy
+#import shortzy import Shortzy
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
@@ -383,11 +383,12 @@ async def get_shortlink(link):
         https = "https"
         link = link.replace("http", https)
 
-   # url = f'https://api.shareus.io/shortLink'
-   # params = {'key': URL_SHORTNER_WEBSITE_API,
-       #       'link': link,
-         #     'format': 'json'
-         #     }
+    url = f'https://api.shareus.io/direct_link'
+    params = {'key': URL_SHORTNER_WEBSITE_API,
+              'link': link,
+              'format': 'json'
+              }
+     '''
    # api, site = URL_SHORTNER_WEBSITE_API, URL_SHORTENR_WEBSITE
     shortzy = Shortzy(URL_SHORTNER_WEBSITE_API, URL_SHORTENR_WEBSITE)
     try:
@@ -405,9 +406,9 @@ async def get_shortlink(link):
                     return data['shortlink']
                 else:
                     logger.error(f"Error: {data['message']}")
-                    return f'https://api.shareus.io/shortlink?key={URL_SHORTNER_WEBSITE_API}&link={link}'
+                    return f'https://api.shareus.io/direct_link?api_key={URL_SHORTNER_WEBSITE_API}&link={link}&pages=3'
 
     except Exception as e:
         logger.error(e)
-        return f'https://api.shareus.io/shortlink?key={URL_SHORTNER_WEBSITE_API}&link={link}'
-        '''
+        return f'https://api.shareus.io/direct_link?key={URL_SHORTNER_WEBSITE_API}&link={link}&pages=3'
+        
