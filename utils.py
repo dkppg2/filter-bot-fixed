@@ -395,6 +395,7 @@ async def get_shortlink(link):
     except Exception as e:
             link = await shortzy.get_quick_link(link)
     return link
+    print(link)
     '''
     try:
         async with aiohttp.ClientSession() as session:
