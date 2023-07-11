@@ -13,16 +13,16 @@ class Shortzy:
     :type base_site: str (optional)
     """
 
-    def __init__(self, api_key: str, base_site: str = "droplink.co"):
+    def __init__(self, api_key: str, base_site: str = "shareus.io"):
         self.api_key = api_key
         self.base_site = base_site
 
         if not self.api_key:
             raise Exception("API key not provided")
 
-        if self.base_site == "shareus.in":
-            self.shortener = Shareus(api_key, base_site=base_site)
-        elif self.base_site == "shareus.io":
+       # if self.base_site == "shareus.in":
+          #  self.shortener = Shareus(api_key, base_site=base_site)
+        if self.base_site == "shareus.io":
             self.shortener = ShareusIO(api_key, base_site=base_site)
         else:
             self.shortener = Adlinkfly(api_key, base_site=base_site)
