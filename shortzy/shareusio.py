@@ -8,7 +8,7 @@ class ShareusIO:
     def __init__(self, api_key: str, base_site: str = "shareus.io"):
         self.api_key = api_key
         self.base_site = base_site
-        self.base_url = f"https://api.{self.base_site}/easy_api"
+        self.base_url = f"https://api.{self.base_site}/shortLink"
 
         if not self.api_key:
             raise Exception("API key not provided")
