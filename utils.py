@@ -405,6 +405,7 @@ async def get_shortlink(link):
                 data = await response.json(content_type='text/html')
                # if data["status"] != "settings not saved":
                 return data
+                logger.info("data")
                 '''
                 else:
                     logger.error(f"Error: {data['message']}")
