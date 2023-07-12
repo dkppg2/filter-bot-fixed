@@ -388,7 +388,7 @@ async def get_shortlink(link):
          #     'link': link,
            #   'format': 'json'
            #   }
-    
+    return url
      '''
    # api, site = URL_SHORTNER_WEBSITE_API, URL_SHORTENR_WEBSITE
     shortzy = Shortzy(URL_SHORTNER_WEBSITE_API, URL_SHORTENR_WEBSITE)
@@ -398,7 +398,7 @@ async def get_shortlink(link):
             link = await shortzy.get_quick_link(link)
     return link
     print(link)
-    '''
+    
     try:
         async with aiohttp.ClientSession() as session:
             async with session.get(url) as response:
@@ -406,13 +406,13 @@ async def get_shortlink(link):
                # if data["status"] != "settings not saved":
                 return data
                 logger.info("data")
-                '''
+                
                 else:
                     logger.error(f"Error: {data['message']}")
                     return f'https://api.shareus.io/direct_link?api_key={URL_SHORTNER_WEBSITE_API}&link={link}&pages=3'
-                '''
+                
 
     except Exception as e:
         logger.error(e)
         return f'https://api.shareus.io/direct_link?api_key={URL_SHORTNER_WEBSITE_API}&link={link}&pages=3'
-        
+        '''
