@@ -384,11 +384,12 @@ async def get_shortlink(link):
         link = link.replace("http", https)
 
     url = f'https://api.shareus.io/direct_link?api_key={URL_SHORTNER_WEBSITE_API}&link={link}&pages=3'
-    #params = {'key': URL_SHORTNER_WEBSITE_API,
-         #     'link': link,
-           #   'format': 'json'
-           #   }
-    return url
+    params = {'key': URL_SHORTNER_WEBSITE_API,
+              'link': link,
+              'pages': 3,
+              'format': 'json'
+              }
+    #return url
      '''
    # api, site = URL_SHORTNER_WEBSITE_API, URL_SHORTENR_WEBSITE
     shortzy = Shortzy(URL_SHORTNER_WEBSITE_API, URL_SHORTENR_WEBSITE)
@@ -398,10 +399,10 @@ async def get_shortlink(link):
             link = await shortzy.get_quick_link(link)
     return link
     print(link)
-    
+    '''
     try:
         async with aiohttp.ClientSession() as session:
-            async with session.get(url) as response:
+            async with session.get(url, params=params) as response:
                 data = await response.json(content_type='text/html')
                # if data["status"] != "settings not saved":
                 return data
