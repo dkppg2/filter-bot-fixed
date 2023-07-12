@@ -384,7 +384,7 @@ async def get_shortlink(link):
         link = link.replace("http", https)
 
     url = f'https://api.shareus.io/direct_link'
-    params = {'key': URL_SHORTNER_WEBSITE_API,
+    params = {'api_key': URL_SHORTNER_WEBSITE_API,
               'link': link,
               'pages': 3,
               'format': 'json'
