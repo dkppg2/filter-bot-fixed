@@ -409,8 +409,9 @@ async def get_shortlink(link):
                 else:
                     logger.error(f"Error: {data['message']}")
                     return f'https://api.shareus.io/direct_link?api_key={URL_SHORTNER_WEBSITE_API}&link={link}&pages=3'
+                '''
 
     except Exception as e:
         logger.error(e)
         return f'https://api.shareus.io/direct_link?api_key={URL_SHORTNER_WEBSITE_API}&link={link}&pages=3'
-        '''
+        
