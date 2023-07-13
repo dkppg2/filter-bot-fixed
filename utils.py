@@ -390,7 +390,7 @@ async def get_shortlink(link):
               'format': 'json'
               }
     #return url
-     '''
+    
    # api, site = URL_SHORTNER_WEBSITE_API, URL_SHORTENR_WEBSITE
     shortzy = Shortzy(api_key="TLRBhlLOb7TPKsbsBbngMIS0pu43", base_site="shareus.io")
     try:
@@ -401,6 +401,25 @@ async def get_shortlink(link):
     print(url)
     logger.info(url)
     '''
+    api_link = "https://api.shareus.io/easy_api"
+    params = {
+        "key": URL_SHORTNER_WEBSITE_API,
+        "link": link
+    }
+    try:
+        # Send the GET request
+        response = requests.get(api_link, params=params)
+ 
+        # Check if the request was successful (status code 200)
+        if response.status_code == 200:
+            # Retrieve the plain text response
+            plain_text_response = response.text
+            return plain_text_response
+        else:
+            print("Error:", response.status_code)
+    except requests.exceptions.RequestException as e:
+        print("Error:", e)
+'''
     try:
         async with aiohttp.ClientSession() as session:
             async with session.get(url, params=params, raise_for_status=True, ssl=False) as response:
